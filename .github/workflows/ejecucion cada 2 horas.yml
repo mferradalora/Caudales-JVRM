@@ -2,7 +2,7 @@ name: Monitoreo Caudales JVRM
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # Ejecuta cada 2 horas
+    - cron: '0 */6 * * *' # Ejecuta cada 2 horas
   workflow_dispatch: # Permite ejecución manual
 
 jobs:
