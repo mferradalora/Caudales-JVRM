@@ -1,0 +1,35 @@
+name: Monitoreo Caudales JVRM
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Ejecuta cada 2 horas
+  workflow_dispatch: # Permite ejecución manual
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # OBLIGATORIO para permitir el push a GitHub
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar librerías
+        run: pip install requests pandas
+
+      - name: Ejecutar script
+        run: python "caudales_jvrm.py"
+
+      - name: Guardar cambios en el CSV
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add caudales_jvrm.csv
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de caudales JVRM" && git push)
