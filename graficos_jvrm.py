@@ -149,7 +149,7 @@ plt.close()
 readme_content = "# 📊 Monitoreo de Caudales, Dotaciones y Turbiedad - JVRM\n\n"
 readme_content += "Visualización de parámetros reportados por la Junta de Vigilancia del Río Maipo (JVRM).\n\n"
 readme_content += (
-    "> *Los gráficos se actualizan automáticamente de forma periódica.*\n\n---\n\n"
+    "> *Los gráficos se actualizan cada 6 horas.*\n\n---\n\n"
 )
 
 readme_content += "## Caudales (m³/s)\n\n"
