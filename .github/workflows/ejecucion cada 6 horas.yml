@@ -21,15 +21,21 @@ jobs:
         with:
           python-version: '3.10'
 
+      # 1. Se agregó matplotlib a la instalación
       - name: Instalar librerías
-        run: pip install requests pandas
+        run: pip install requests pandas matplotlib
 
       - name: Ejecutar script
         run: python "caudales_jvrm.py"
 
-      - name: Guardar cambios en el CSV
+      # 2. Nuevo paso: Ejecutar el script que crea los gráficos y el README
+      - name: Generar gráficos y README
+        run: python "graficos_jvrm.py"
+
+      # 3. Se cambió `git add caudales_jvrm.csv` a `git add .` para incluir imágenes y README
+      - name: Guardar cambios en el repositorio
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add caudales_jvrm.csv
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de caudales JVRM" && git push)
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de caudales y gráficos JVRM" && git push)
