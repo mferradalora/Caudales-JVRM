@@ -2,7 +2,7 @@
 
 Visualización de parámetros reportados por la Junta de Vigilancia del Río Maipo (JVRM).
 
-> *Los gráficos se actualizan automáticamente de forma periódica.*
+> *Los gráficos se actualizan cada 6 horas.*
 
 ---
 
