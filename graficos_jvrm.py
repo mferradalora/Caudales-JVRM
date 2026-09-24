@@ -185,14 +185,14 @@ if os.path.exists('lluvia_jvrm.csv'):
         )
 
     plt.title(
-        'Precipitación Pluvial (Lluvia) JVRM',
+        'Precipitación Pluvial JVRM',
         fontsize=14,
         fontweight='bold',
         pad=12,
     )
     plt.ylabel('Lluvia (mm)', fontsize=10)
     aplicar_formato_eje_x(plt.gca())
-    plt.legend(loc='upper right', fontsize=8, ncol=2)
+    plt.legend(loc='upper left', fontsize=8, ncol=2)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'lluvia.png'), dpi=120)
     plt.close()
