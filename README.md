@@ -1,6 +1,6 @@
-# 📊 Monitoreo de Caudales, Precipitaciones y Turbiedad - JVRM
+# 📊 Monitoreo de Caudales, Turbiedad y Precipitaciones - JVRM
 
-Visualización de parámetros reportados por la Junta de Vigilancia del Río Maipo (JVRM).
+Visualización de parámetros reportados por la Junta de Vigilancia de la 1a Sección del Río Maipo (JVRM).
 
 > *Los gráficos se actualizan automáticamente.*
 
@@ -24,7 +24,7 @@ Visualización de parámetros reportados por la Junta de Vigilancia del Río Mai
 
 ---
 
-## Precipitación Pluvial - Lluvia (mm)
+## Precipitación Pluvial (mm)
 
 ![Lluvia JVRM](graficos/lluvia.png)
 
@@ -36,7 +36,7 @@ Visualización de parámetros reportados por la Junta de Vigilancia del Río Mai
 
 ---
 
-## Precipitación Nival - Altura de Nieve (cm)
+## Altura de Nieve (cm)
 
 ![Nieve JVRM](graficos/nieve.png)
 
