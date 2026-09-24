@@ -193,7 +193,7 @@ if os.path.exists('lluvia_jvrm.csv'):
     )
     plt.ylabel('Lluvia (mm)', fontsize=10)
     aplicar_formato_eje_x(plt.gca())
-    plt.legend(loc='upper right', fontsize=8, ncol=2)
+    plt.legend(loc='upper left', fontsize=8, ncol=2)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'lluvia.png'), dpi=120)
     plt.close()
@@ -276,9 +276,9 @@ if os.path.exists('nieve_jvrm.csv'):
 # 4. GENERAR README.md
 # =============================================================
 readme_content = (
-    '# 📊 Monitoreo de Caudales, Precipitaciones y Turbiedad - JVRM\n\n'
+    '# 📊 Monitoreo de Caudales, Turbiedad y Precipitaciones - JVRM\n\n'
 )
-readme_content += 'Visualización de parámetros reportados por la Junta de Vigilancia del Río Maipo (JVRM).\n\n'
+readme_content += 'Visualización de parámetros reportados por la Junta de Vigilancia de la 1a Sección del Río Maipo (JVRM).\n\n'
 readme_content += (
     '> *Los gráficos se actualizan automáticamente.*\n\n---\n\n'
 )
@@ -295,13 +295,13 @@ if os.path.exists(os.path.join(output_dir, 'turbiedad.png')):
     readme_content += '## Turbiedad (UNT)\n\n![Turbiedad JVRM](graficos/turbiedad.png)\n\n---\n\n'
 
 if os.path.exists(os.path.join(output_dir, 'lluvia.png')):
-    readme_content += '## Precipitación Pluvial - Lluvia (mm)\n\n![Lluvia JVRM](graficos/lluvia.png)\n\n---\n\n'
+    readme_content += '## Precipitación Pluvial (mm)\n\n![Lluvia JVRM](graficos/lluvia.png)\n\n---\n\n'
 
 if os.path.exists(os.path.join(output_dir, 'lluvia_acumulada.png')):
     readme_content += '## Precipitación Pluvial Acumulada (mm)\n\n![Lluvia Acumulada JVRM](graficos/lluvia_acumulada.png)\n\n---\n\n'
 
 if os.path.exists(os.path.join(output_dir, 'nieve.png')):
-    readme_content += '## Precipitación Nival - Altura de Nieve (cm)\n\n![Nieve JVRM](graficos/nieve.png)\n\n---\n\n'
+    readme_content += '## Altura de Nieve (cm)\n\n![Nieve JVRM](graficos/nieve.png)\n\n---\n\n'
 
 with open('README.md', 'w', encoding='utf-8') as f:
     f.write(readme_content)
