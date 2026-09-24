@@ -1,8 +1,8 @@
-# 📊 Monitoreo de Caudales, Dotaciones y Turbiedad - JVRM
+# 📊 Monitoreo de Caudales, Precipitaciones y Turbiedad - JVRM
 
 Visualización de parámetros reportados por la Junta de Vigilancia del Río Maipo (JVRM).
 
-> *Los gráficos se actualizan cada 6 horas.*
+> *Los gráficos se actualizan automáticamente.*
 
 ---
 
@@ -21,6 +21,18 @@ Visualización de parámetros reportados por la Junta de Vigilancia del Río Mai
 ## Turbiedad (UNT)
 
 ![Turbiedad JVRM](graficos/turbiedad.png)
+
+---
+
+## Precipitación Pluvial - Lluvia (mm)
+
+![Lluvia JVRM](graficos/lluvia.png)
+
+---
+
+## Precipitación Nival - Altura de Nieve (cm)
+
+![Nieve JVRM](graficos/nieve.png)
 
 ---
 
