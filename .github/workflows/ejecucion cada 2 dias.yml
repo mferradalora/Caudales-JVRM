@@ -1,0 +1,35 @@
+name: Monitoreo Precipitaciones JVRM
+
+on:
+  schedule:
+    - cron: '0 12 */2 * *' # Se ejecuta cada 2 días a las 12:00 UTC
+  workflow_dispatch: # Permite ejecución manual desde la pestaña Actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # Requerido para hacer git push
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar librerías
+        run: pip install requests pandas
+
+      - name: Ejecutar script de precipitaciones
+        run: python "precipitacion_jvrm.py"
+
+      - name: Guardar cambios en el repositorio
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de precipitaciones (lluvia y nieve) JVRM" && git push)
