@@ -159,7 +159,6 @@ if os.path.exists('lluvia_jvrm.csv'):
         .drop_duplicates(subset=['Fecha_Hora'])
     )
 
-    plt.figure(figsize=(10, 5))
     nombres_lluvia = {
         'La_Obra_JVRM_mm': 'La Obra (JVRM)',
         'La_Obra_EMOS_DGA_mm': 'La Obra EMOS (DGA)',
@@ -171,6 +170,8 @@ if os.path.exists('lluvia_jvrm.csv'):
         'Embalse_EEY_mm': 'Embalse EEY',
     }
 
+    # GRÁFICO 4.1: Precipitación Pluvial por Evento (mm)
+    plt.figure(figsize=(10, 5))
     for col in cols_lluvia:
         label = nombres_lluvia.get(
             col, col.replace('_mm', '').replace('_', ' ')
@@ -192,9 +193,39 @@ if os.path.exists('lluvia_jvrm.csv'):
     )
     plt.ylabel('Lluvia (mm)', fontsize=10)
     aplicar_formato_eje_x(plt.gca())
-    plt.legend(loc='upper left', fontsize=8, ncol=2)
+    plt.legend(loc='upper right', fontsize=8, ncol=2)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'lluvia.png'), dpi=120)
+    plt.close()
+
+    # GRÁFICO 4.2: Precipitación Pluvial Acumulada (mm)
+    plt.figure(figsize=(10, 5))
+    for col in cols_lluvia:
+        label = nombres_lluvia.get(
+            col, col.replace('_mm', '').replace('_', ' ')
+        )
+        # Se reemplazan NaN con 0 antes del sumatorio para evitar rupturas en la curva
+        acumulado = df_lluvia[col].fillna(0).cumsum()
+        plt.plot(
+            df_lluvia['Fecha_Hora'],
+            acumulado,
+            label=label,
+            marker='o',
+            markersize=3,
+            linewidth=1.5,
+        )
+
+    plt.title(
+        'Precipitación Pluvial Acumulada JVRM',
+        fontsize=14,
+        fontweight='bold',
+        pad=12,
+    )
+    plt.ylabel('Lluvia Acumulada (mm)', fontsize=10)
+    aplicar_formato_eje_x(plt.gca())
+    plt.legend(loc='upper left', fontsize=8, ncol=2)
+    plt.tight_layout()
+    plt.savefig(os.path.join(output_dir, 'lluvia_acumulada.png'), dpi=120)
     plt.close()
 
 # =============================================================
@@ -265,6 +296,9 @@ if os.path.exists(os.path.join(output_dir, 'turbiedad.png')):
 
 if os.path.exists(os.path.join(output_dir, 'lluvia.png')):
     readme_content += '## Precipitación Pluvial - Lluvia (mm)\n\n![Lluvia JVRM](graficos/lluvia.png)\n\n---\n\n'
+
+if os.path.exists(os.path.join(output_dir, 'lluvia_acumulada.png')):
+    readme_content += '## Precipitación Pluvial Acumulada (mm)\n\n![Lluvia Acumulada JVRM](graficos/lluvia_acumulada.png)\n\n---\n\n'
 
 if os.path.exists(os.path.join(output_dir, 'nieve.png')):
     readme_content += '## Precipitación Nival - Altura de Nieve (cm)\n\n![Nieve JVRM](graficos/nieve.png)\n\n---\n\n'
