@@ -30,6 +30,12 @@ Visualización de parámetros reportados por la Junta de Vigilancia del Río Mai
 
 ---
 
+## Precipitación Pluvial Acumulada (mm)
+
+![Lluvia Acumulada JVRM](graficos/lluvia_acumulada.png)
+
+---
+
 ## Precipitación Nival - Altura de Nieve (cm)
 
 ![Nieve JVRM](graficos/nieve.png)
