@@ -8,9 +8,10 @@ output_dir = 'graficos'
 os.makedirs(output_dir, exist_ok=True)
 
 
-# Función auxiliar para aplicar el formato del eje X por día (dd-mm-yyyy)
+# Función auxiliar actualizada para ajustar automáticamente el intervalo de fechas
 def aplicar_formato_eje_x(ax):
-    ax.xaxis.set_major_locator(mdates.DayLocator())
+    # AutoDateLocator selecciona automáticamente un intervalo legible (semanal/mensual)
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m-%Y'))
     plt.xticks(rotation=45, ha='right', fontsize=9)
     plt.xlabel('Fecha Reportada', fontsize=10)
