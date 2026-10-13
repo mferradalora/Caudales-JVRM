@@ -2,7 +2,8 @@ name: Monitoreo Precipitaciones JVRM
 
 on:
   schedule:
-    - cron: '0 12 */2 * *' # Se ejecuta cada 2 días a las 12:00 UTC
+    # Se cambió el minuto 0 por el 30 (12:30 UTC) para evitar que choque con el workflow de Caudales
+    - cron: '30 12 */2 * *'
   workflow_dispatch: # Permite ejecución manual desde la pestaña Actions
 
 jobs:
@@ -21,15 +22,21 @@ jobs:
         with:
           python-version: '3.10'
 
+      # 1. Se agregó 'matplotlib' a la lista de librerías
       - name: Instalar librerías
-        run: pip install requests pandas
+        run: pip install requests pandas matplotlib
 
       - name: Ejecutar script de precipitaciones
         run: python "precipitacion_jvrm.py"
 
+      # 2. Se agregó el paso para actualizar gráficos y el README
+      - name: Generar gráficos y README
+        run: python "graficos_jvrm.py"
+
+      # 3. Guardar cambios (git add . ya incluye el README y las imágenes nuevas)
       - name: Guardar cambios en el repositorio
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de precipitaciones (lluvia y nieve) JVRM" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática de precipitaciones, gráficos y README JVRM" && git push)
