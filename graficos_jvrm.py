@@ -280,7 +280,7 @@ readme_content = (
 )
 readme_content += 'Visualización de parámetros reportados por la Junta de Vigilancia de la 1a Sección del Río Maipo (JVRM).\n\n'
 readme_content += (
-    '> *Los gráficos se actualizan automáticamente.*\n\n---\n\n'
+    '> *Los gráficos se actualizan diariamente.*\n\n---\n\n'
 )
 
 if os.path.exists(os.path.join(output_dir, 'caudales.png')):
