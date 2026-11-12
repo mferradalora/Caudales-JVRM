@@ -2,7 +2,7 @@
 
 Visualización de parámetros reportados por la Junta de Vigilancia de la 1a Sección del Río Maipo (JVRM).
 
-> *Los gráficos se actualizan automáticamente.*
+> *Los gráficos se actualizan diariamente.*
 
 ---
 
